@@ -1,0 +1,22 @@
+.navbar-item a:hover {
+  color: var(--primary);
+}
+
+.navbar-item.icon {
+  font-size: 1.2rem;
+  position: relative;
+}
+
+.active {
+  color: var(--primary);
+  border-bottom: 2px var(--primary) solid;
+}
+
+.navbar-item.icon .badge {
+  font-size: 0.5em;
+  position: absolute;
+  top: 10px;
+  right: -5px;
+  background-color: var(--primary);
+  color: var(--white);
+}
