@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
 import axios from 'axios';
-import { useProducts } from '../context/productsContext';
 import {
   PRODUCT_TOP_REQUEST,
   PRODUCT_TOP_SUCCESS,
