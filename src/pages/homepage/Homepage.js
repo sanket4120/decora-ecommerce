@@ -1,21 +1,23 @@
-import React from 'react';
-import Footer from '../components/footer/Footer';
-import Searchbar from '../components/searchbar/Searchbar';
-import ProductCarousel from '../components/carousel/ProductCarousel';
-import CategoryCarousel from '../components/carousel/CategoryCarousel';
-import ProductCard from '../components/cards/productCard/ProductCard';
-import { useGetFeaturedProducts } from '../actions/productActions';
+import ProductCarousel from '../../components/carousel/ProductCarousel';
+import CategoryCarousel from '../../components/carousel/CategoryCarousel';
+import ProductCard from '../../components/cards/productCard/ProductCard';
+import { getFeaturedProducts } from '../../actions/productActions';
+import { useProducts } from '../../context/productsContext';
+import { useEffect } from 'react';
 
 function Homepage() {
-  const { products } = useGetFeaturedProducts();
+  const {
+    featuredProductsState: { products },
+    setFeaturedProducts,
+  } = useProducts();
+
+  useEffect(() => {
+    getFeaturedProducts(setFeaturedProducts);
+  }, [setFeaturedProducts]);
 
   return (
-    <React.Fragment>
+    <>
       <div className='container'>
-        <section className='mt-3 mb-5'>
-          <Searchbar />
-        </section>
-
         <main>
           <section aria-label='productCarousel' className='mb-6'>
             <ProductCarousel />
@@ -31,7 +33,7 @@ function Homepage() {
             <div className='grid gap-2'>
               {products.map((product) => (
                 <div
-                  className='col-6 col-sm-6 col-md-4 col-lg-3'
+                  className='col-6 col-sm-6 col-md-4 col-lg-3 flex flex-column'
                   key={product._id}
                 >
                   <ProductCard product={product} />
@@ -41,9 +43,7 @@ function Homepage() {
           </section>
         </main>
       </div>
-
-      <Footer />
-    </React.Fragment>
+    </>
   );
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './navbar.css';
 
 function Navbar() {
@@ -8,38 +8,36 @@ function Navbar() {
       <nav className='navbar container'>
         <div className='navbar-brand'>
           <div className='navbar-item'>
-            <h3>
-              <Link to='/'>Decora</Link>
-            </h3>
+            <h3>Decora</h3>
           </div>
         </div>
         <ul className='navbar-menu' id='menu'>
-          <li className='navbar-item txt-center active'>
-            <Link to='/'>Home</Link>
+          <li className='navbar-item txt-center'>
+            <NavLink to='/'>Home</NavLink>
           </li>
           <li className='navbar-item txt-center'>
-            <Link to='/'>Categories</Link>
+            <NavLink to='/categories'>Categories</NavLink>
           </li>
           <li className='navbar-item txt-center'>
-            <Link to='/'>Shop</Link>
+            <NavLink to='/shop'>Shop</NavLink>
           </li>
         </ul>
         <ul>
           <li className='navbar-item icon'>
-            <Link to='/'>
+            <NavLink to='/login'>
               <i className='fa-regular fa-user'></i>
-            </Link>
+            </NavLink>
           </li>
           <li className='navbar-item icon'>
-            <Link to='/'>
+            <NavLink to='/wishlist'>
               <i className='fa-regular fa-heart'></i>
-            </Link>
+            </NavLink>
             <span className='badge'>4</span>
           </li>
           <li className='navbar-item icon'>
-            <Link to='/'>
+            <NavLink to='/cart'>
               <i className='fa-solid fa-bag-shopping'></i>
-            </Link>
+            </NavLink>
             <span className='badge'>4</span>
           </li>
           <li
