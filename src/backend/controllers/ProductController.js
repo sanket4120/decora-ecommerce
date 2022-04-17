@@ -34,3 +34,40 @@ export const getProductHandler = function (schema, request) {
     );
   }
 };
+
+export const getTopProductHandler = function () {
+  try {
+    let products = this.db.products;
+    products = products
+      .sort((productA, productB) => productB.rating - productA.rating)
+      .slice(0, 3);
+    return new Response(200, {}, { products });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};
+
+export const getFeaturedProductHandler = function () {
+  try {
+    let products = this.db.products;
+    products = products
+      .filter((product) => product.discount)
+      .sort((productA, productB) => productB.discount - productA.discount)
+      .slice(0, 8);
+    return new Response(200, {}, { products });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};

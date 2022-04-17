@@ -10,7 +10,7 @@ function CategoryCard({ category }) {
         className='contain'
         loading='lazy'
       />
-      <span className='absolute start-0 bottom-0 bg-white p-1'>
+      <span className='absolute start-0 bottom-0 bg-white p-1 txt-capitalize'>
         {category.categoryName}
       </span>
     </div>

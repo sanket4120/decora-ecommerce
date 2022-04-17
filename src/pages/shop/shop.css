@@ -1,0 +1,20 @@
+@media screen and (max-width: 768px) {
+  .filters {
+    padding: 2rem 1rem;
+    position: fixed;
+    width: 60vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transform: translateX(-60vw);
+    z-index: 1;
+    box-shadow: var(--shadow);
+    transition: all 0.3s linear;
+    background-color: var(--white);
+    overflow-y: auto;
+  }
+
+  .translate-x-0 {
+    transform: translateX(0);
+  }
+}

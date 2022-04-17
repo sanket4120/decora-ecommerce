@@ -1,33 +1,42 @@
 import { createContext, useReducer, useContext } from 'react';
 import {
+  initialState,
   featuredProductsReducer,
   topProductsReducer,
+  productListReducer,
 } from '../reducers/productReducer';
-
-const initialState = {
-  topProducts: { products: [] },
-  featuredProducts: { products: [] },
-};
+import { filterProducts } from '../utils/filter';
 
 const ProductsContext = createContext(initialState);
 
 const ProductsProvider = ({ children }) => {
-  const [topProducts, setTopProducts] = useReducer(
+  const [topProductsState, setTopProducts] = useReducer(
     topProductsReducer,
     initialState.topProducts
   );
-  const [featuredProducts, setFeaturedProducts] = useReducer(
+  const [featuredProductsState, setFeaturedProducts] = useReducer(
     featuredProductsReducer,
     initialState.featuredProducts
   );
 
+  const [productListState, setProductList] = useReducer(
+    productListReducer,
+    initialState.productList
+  );
+
+  const { products, filters } = productListState;
+  const filteredProducts = filterProducts(products, filters);
+
   return (
     <ProductsContext.Provider
       value={{
-        topProducts,
-        featuredProducts,
+        topProductsState,
+        featuredProductsState,
+        productListState,
+        filteredProducts,
         setFeaturedProducts,
         setTopProducts,
+        setProductList,
       }}
     >
       {children}
