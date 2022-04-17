@@ -1,22 +1,50 @@
+.navbar-item {
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
 .navbar-item a:hover {
   color: var(--primary);
 }
 
-.navbar-item.icon {
-  font-size: 1.2rem;
+.badge-container {
   position: relative;
 }
 
 .active {
   color: var(--primary);
-  border-bottom: 2px var(--primary) solid;
 }
 
-.navbar-item.icon .badge {
+.navbar-item .badge {
   font-size: 0.5em;
   position: absolute;
   top: 10px;
   right: -5px;
   background-color: var(--primary);
   color: var(--white);
+}
+
+.navbar-item.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  margin-top: 10px;
+  z-index: 1;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  border-radius: var(--rounded);
+}
+
+.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  cursor: pointer;
 }

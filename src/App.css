@@ -21,5 +21,13 @@
 }
 
 .minheight {
-  min-height: calc(100vh - 10rem);
+  min-height: 80vh;
+}
+
+.close {
+  cursor: pointer;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

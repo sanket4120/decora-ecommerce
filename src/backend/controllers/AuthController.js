@@ -1,7 +1,7 @@
-import { v4 as uuid } from "uuid";
-import { Response } from "miragejs";
-import { formatDate } from "../utils/authUtils";
-const sign = require("jwt-encode");
+import { v4 as uuid } from 'uuid';
+import { Response } from 'miragejs';
+import { formatDate, requiresAuth } from '../utils/authUtils';
+const sign = require('jwt-encode');
 /**
  * All the routes related to Auth are present here.
  * These are Publicly accessible routes.
@@ -23,7 +23,7 @@ export const signupHandler = function (schema, request) {
         422,
         {},
         {
-          errors: ["Unprocessable Entity. Email Already Exists."],
+          errors: ['Unprocessable Entity. Email Already Exists.'],
         }
       );
     }
@@ -62,11 +62,12 @@ export const loginHandler = function (schema, request) {
   const { email, password } = JSON.parse(request.requestBody);
   try {
     const foundUser = schema.users.findBy({ email });
+
     if (!foundUser) {
       return new Response(
         404,
         {},
-        { errors: ["The email you entered is not Registered. Not Found error"] }
+        { errors: ['The email you entered is not Registered.'] }
       );
     }
     if (password === foundUser.password) {
@@ -77,13 +78,11 @@ export const loginHandler = function (schema, request) {
       foundUser.password = undefined;
       return new Response(200, {}, { foundUser, encodedToken });
     }
-    new Response(
+    return new Response(
       401,
       {},
       {
-        errors: [
-          "The credentials you entered are invalid. Unauthorized access error.",
-        ],
+        errors: ['Invalid login credentials'],
       }
     );
   } catch (error) {
