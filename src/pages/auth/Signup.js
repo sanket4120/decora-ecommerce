@@ -1,8 +1,8 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { validateSignupField, validateSignup } from '../../utils/validate';
-import { signup } from '../../actions/authActions';
-import { useUser } from '../../context/authContext';
+import { signup } from '../../actions/userActions';
+import { useUser } from '../../context/userContext';
 import { useMessage } from '../../context/messageContext';
 
 const Signup = () => {

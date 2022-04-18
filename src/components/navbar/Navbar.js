@@ -1,11 +1,12 @@
 import { NavLink } from 'react-router-dom';
-import { logout } from '../../actions/authActions';
-import { useUser } from '../../context/authContext';
+import { logout } from '../../actions/userActions';
+import { useUser } from '../../context/userContext';
 import './navbar.css';
 
 function Navbar() {
   const {
     authState: { isAuthenticated, userInfo },
+    wishlistState: { wishlist },
     setAuth,
   } = useUser();
 
@@ -60,7 +61,7 @@ function Navbar() {
             <NavLink to='/wishlist'>
               <i className='fa-regular fa-heart'></i>
             </NavLink>
-            <span className='badge'>4</span>
+            <span className='badge'>{wishlist ? wishlist.length : '0'}</span>
           </li>
           <li className='navbar-item badge-container'>
             <NavLink to='/cart'>

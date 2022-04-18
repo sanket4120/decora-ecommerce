@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './auth.css';
 import { validateLogin, validateLoginField } from '../../utils/validate';
-import { useUser } from '../../context/authContext';
+import { useUser } from '../../context/userContext';
 import { useMessage } from '../../context/messageContext';
-import { login } from '../../actions/authActions';
+import { login } from '../../actions/userActions';
 
 const Login = () => {
   const [formData, setFormData] = useState({
