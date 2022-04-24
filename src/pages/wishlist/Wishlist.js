@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
+import useDocumentTitle from '../../utils/useDocumentTitle';
 import ProductCard from '../../components/cards/productCard/ProductCard';
 import { useUser } from '../../context/userContext';
 
 const Wishlist = () => {
+  useDocumentTitle('Wishlist');
   const {
     wishlistState: { wishlist },
   } = useUser();
@@ -11,7 +13,7 @@ const Wishlist = () => {
     <main class='my-6 minheight'>
       <h1 class='txt-center mb-5 size-2'>Wish List</h1>
 
-      {wishlist.length > 0 ? (
+      {wishlist?.length > 0 ? (
         <section class='grid gap-2'>
           {wishlist.map((product) => (
             <div
