@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './auth.css';
 import { validateLogin, validateLoginField } from '../../utils/validate';
-import { useUser } from '../../context/authContext';
+import { useUser } from '../../context/userContext';
 import { useMessage } from '../../context/messageContext';
-import { login } from '../../actions/authActions';
+import { login } from '../../actions/userActions';
+import useDocumentTitle from '../../utils/useDocumentTitle';
 
 const Login = () => {
+  useDocumentTitle('Login');
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -35,9 +37,13 @@ const Login = () => {
     setShowPassword((prevState) => !prevState);
   };
 
-  const loginWithTestCredentials = () => {
-    const loginCredentials = { email: 'john@gmail.com', password: '123456' };
-    login(setAuth, setMessages, loginCredentials);
+  const fillTestCredentials = (e) => {
+    e.preventDefault();
+    setFormData((prevState) => ({
+      ...prevState,
+      email: 'john@gmail.com',
+      password: '123456',
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -142,13 +148,9 @@ const Login = () => {
           <button
             className='btn btn-outline-primary mb-3 w-100'
             disabled={loading}
-            onClick={loginWithTestCredentials}
+            onClick={fillTestCredentials}
           >
-            {loading ? (
-              <i className='fa-solid fa-circle-notch fa-spin'></i>
-            ) : (
-              'Login With Test Credentials'
-            )}
+            Fill Test Credentials
           </button>
 
           <button className='btn btn-primary w-100' disabled={loading}>

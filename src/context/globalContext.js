@@ -2,7 +2,7 @@ import { createContext } from 'react';
 import CategoryProvider from './categoryContext';
 import MessageProvider from './messageContext';
 import ProductsProvider from './productsContext';
-import AuthProvider from './authContext';
+import UserProvider from './userContext';
 
 const initialilState = {};
 const GlobalContext = createContext(initialilState);
@@ -11,11 +11,11 @@ const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider value={initialilState}>
       <MessageProvider>
-        <AuthProvider>
+        <UserProvider>
           <CategoryProvider>
             <ProductsProvider>{children}</ProductsProvider>
           </CategoryProvider>
-        </AuthProvider>
+        </UserProvider>
       </MessageProvider>
     </GlobalContext.Provider>
   );

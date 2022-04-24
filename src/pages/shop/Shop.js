@@ -66,7 +66,13 @@ const Shop = () => {
                     </div>
                   </>
                 ) : (
-                  <h1 className='txt-center'>Sorry, no results found!</h1>
+                  <div className='txt-center'>
+                    <h1 className='mb-3'>Sorry, no results found!</h1>
+                    <p>
+                      Please check the spelling or try searching for something
+                      else
+                    </p>
+                  </div>
                 )}
               </main>
             </div>

@@ -1,11 +1,12 @@
 import { useMessage } from '../../context/messageContext';
-import Message from './Message';
+import Message from './message/Message';
+import './messages.css';
 
 const Messages = () => {
   const { messages } = useMessage();
 
   return (
-    <div className='fixed end-0'>
+    <div className='messages-container'>
       {messages.length > 0 &&
         messages != null &&
         messages.map((message) => (

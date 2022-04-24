@@ -1,5 +1,5 @@
-import { REMOVE_MESSAGE } from '../../constants/messageConstants';
-import { useMessage } from '../../context/messageContext';
+import { REMOVE_MESSAGE } from '../../../constants/messageConstants';
+import { useMessage } from '../../../context/messageContext';
 
 const Message = ({ message: { id, message, messageType } }) => {
   const { setMessages } = useMessage();
