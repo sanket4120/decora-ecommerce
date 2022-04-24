@@ -4,8 +4,10 @@ import { validateSignupField, validateSignup } from '../../utils/validate';
 import { signup } from '../../actions/userActions';
 import { useUser } from '../../context/userContext';
 import { useMessage } from '../../context/messageContext';
+import useDocumentTitle from '../../utils/useDocumentTitle';
 
 const Signup = () => {
+  useDocumentTitle('Signup');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',

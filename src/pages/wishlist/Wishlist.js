@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
+import useDocumentTitle from '../../utils/useDocumentTitle';
 import ProductCard from '../../components/cards/productCard/ProductCard';
 import { useUser } from '../../context/userContext';
 
 const Wishlist = () => {
+  useDocumentTitle('Wishlist');
   const {
     wishlistState: { wishlist },
   } = useUser();
