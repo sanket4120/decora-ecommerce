@@ -1,0 +1,7 @@
+.product-quantity {
+  max-width: 5rem;
+}
+
+.card-horizontal .card-image {
+  border-radius: var(--rounded);
+}
