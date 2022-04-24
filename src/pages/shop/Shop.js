@@ -22,7 +22,7 @@ const Shop = () => {
   }, [setProductList]);
 
   return (
-    <div className='container'>
+    <>
       {loading && <Loader />}
       {!loading && (
         <>
@@ -73,7 +73,7 @@ const Shop = () => {
           </section>
         </>
       )}
-    </div>
+    </>
   );
 };
 
