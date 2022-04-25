@@ -28,7 +28,7 @@ export const products = [
     discount: '20',
     discountPrice: '2400',
     rating: '4.5',
-    stock: '10',
+    stock: 0,
   },
   {
     _id: uuid(),
@@ -52,7 +52,7 @@ export const products = [
     discount: '30',
     discountPrice: '4200',
     rating: '4.5',
-    stock: '10',
+    stock: 3,
   },
   {
     _id: uuid(),
@@ -76,7 +76,7 @@ export const products = [
     discount: '30',
     discountPrice: '4200',
     rating: '3',
-    stock: '10',
+    stock: 4,
   },
   {
     _id: uuid(),
@@ -98,7 +98,7 @@ export const products = [
       'https://github.com/sanket4120/Decora/blob/Dev/assets/furniture.png?raw=true',
     price: '3000',
     rating: '4',
-    stock: '10',
+    stock: 10,
   },
   {
     _id: uuid(),
@@ -123,7 +123,7 @@ export const products = [
     discount: '40',
     discountPrice: '20160',
     rating: '4.5',
-    stock: '10',
+    stock: 5,
   },
   {
     _id: uuid(),
@@ -149,7 +149,7 @@ export const products = [
     discount: '11',
     discountPrice: '4692',
     rating: '4',
-    stock: '10',
+    stock: 9,
   },
   {
     _id: uuid(),
@@ -174,7 +174,7 @@ export const products = [
     discount: '40',
     discountPrice: '6299',
     rating: '4',
-    stock: '10',
+    stock: 2,
   },
   {
     _id: uuid(),
@@ -198,7 +198,7 @@ export const products = [
     discount: '33',
     discountPrice: '3704',
     rating: '3',
-    stock: '10',
+    stock: 4,
   },
   {
     _id: uuid(),
@@ -222,14 +222,14 @@ export const products = [
     discount: '49',
     discountPrice: '1427',
     rating: '5',
-    stock: '10',
+    stock: 10,
   },
   {
     _id: uuid(),
     author: 'Sapphire',
     categoryName: 'lighting',
     rating: '4',
-    stock: '10',
+    stock: 10,
     title: 'White Fabric Shade Table Lamp with Black Base',
     details: {
       Brand: 'Sapphire',
@@ -251,7 +251,7 @@ export const products = [
     author: 'Fourwalls',
     categoryName: 'decor',
     rating: '3.5',
-    stock: '10',
+    stock: 10,
     title: 'Brown Metal Hanging Basket',
     details: {
       Brand: 'Fourwalls',
@@ -273,7 +273,7 @@ export const products = [
     author: 'Fourwalls',
     categoryName: 'decor',
     rating: '4',
-    stock: '10',
+    stock: 10,
     title: 'Golden Deidra Metal Table Vase',
     details: {
       Brand: 'Fourwalls',
@@ -296,7 +296,7 @@ export const products = [
     author: 'Fourwalls',
     categoryName: 'decor',
     rating: '4',
-    stock: '10',
+    stock: 10,
     title: 'Royal Elephant Deocrative Wall Plate',
     details: {
       Brand: 'Fourwalls',
@@ -318,7 +318,7 @@ export const products = [
     author: 'Fourwalls',
     categoryName: 'decor',
     rating: '5',
-    stock: '10',
+    stock: 3,
     title: 'Urn Terracotta Vase',
     details: {
       Brand: 'Fourwalls',
@@ -341,7 +341,7 @@ export const products = [
     author: 'Fourwalls',
     categoryName: 'decor',
     rating: '4',
-    stock: '10',
+    stock: 10,
     title: 'Art Deocrative Wall Plate',
     details: {
       Brand: 'Fourwalls',
@@ -363,7 +363,7 @@ export const products = [
     author: 'Go Hooked',
     categoryName: 'paintings',
     rating: '4',
-    stock: '10',
+    stock: 4,
     title: 'MDF Digital Print Set of 3 Wall Art Painting',
     details: {
       Brand: 'Go Hooked',
@@ -388,7 +388,7 @@ export const products = [
     author: 'Go Hooked',
     categoryName: 'paintings',
     rating: '4.5',
-    stock: '10',
+    stock: 10,
     title: 'Yellow Figurine Set',
     details: {
       Brand: 'Go Hooked',
@@ -414,7 +414,7 @@ export const products = [
     author: 'Go Hooked',
     categoryName: 'paintings',
     rating: '3',
-    stock: '10',
+    stock: 10,
     title: 'Framed Canvas Abstract Painting',
     details: {
       Brand: 'Go Hooked',
@@ -439,7 +439,7 @@ export const products = [
     author: 'Go Hooked',
     categoryName: 'paintings',
     rating: '3.5',
-    stock: '10',
+    stock: 3,
     title: 'White Niagarra Falls Canvas',
     details: {
       Brand: 'Go Hooked',

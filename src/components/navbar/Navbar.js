@@ -7,11 +7,13 @@ function Navbar() {
   const {
     authState: { isAuthenticated, userInfo },
     wishlistState: { wishlist },
+    cartState: { cart },
     setAuth,
   } = useUser();
 
   const handleLogout = () => {
     logout(setAuth);
+    document.location.href = '/';
   };
 
   return (
@@ -67,7 +69,7 @@ function Navbar() {
             <NavLink to='/cart'>
               <i className='fa-solid fa-bag-shopping'></i>
             </NavLink>
-            <span className='badge'>4</span>
+            <span className='badge'>{cart ? cart.length : '0'}</span>
           </li>
           <li
             className='navbar-item navbar-toggler'

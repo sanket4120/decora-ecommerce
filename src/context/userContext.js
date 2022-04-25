@@ -1,9 +1,10 @@
 import { createContext, useContext, useReducer, useEffect } from 'react';
-import { getUserWishlist } from '../actions/userActions';
+import { getUserCart, getUserWishlist } from '../actions/userActions';
 import {
   initialState,
   authReducer,
   wishlistReducer,
+  cartReducer,
 } from '../reducers/userReducer';
 import setAuthToken from '../utils/setAuthToken';
 
@@ -15,10 +16,12 @@ const UserProvider = ({ children }) => {
     wishlistReducer,
     initialState.wishlist
   );
+  const [cartState, setCart] = useReducer(cartReducer, initialState.cart);
 
   useEffect(() => {
     if (authState.isAuthenticated) {
       getUserWishlist(setWishlist);
+      getUserCart(setCart);
     }
 
     const encodedToken = localStorage.getItem('token');
@@ -27,7 +30,14 @@ const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ authState, setAuth, wishlistState, setWishlist }}
+      value={{
+        authState,
+        setAuth,
+        wishlistState,
+        setWishlist,
+        cartState,
+        setCart,
+      }}
     >
       {children}
     </UserContext.Provider>
