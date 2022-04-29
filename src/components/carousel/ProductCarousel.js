@@ -17,8 +17,8 @@ function ProductCarousel() {
 
   return (
     <Slider {...productSliderSettings}>
-      {products.map((banner) => (
-        <Banner banner={banner} key={banner.title} />
+      {products.map((product) => (
+        <Banner product={product} key={product._id} />
       ))}
     </Slider>
   );

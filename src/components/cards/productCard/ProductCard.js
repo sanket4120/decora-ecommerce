@@ -69,36 +69,39 @@ function ProductCard({ product, showDetails }) {
           <i className='fa-regular fa-heart'></i>
         </button>
       )}
+      <Link to={`/product/${product._id}`}>
+        <img
+          src={product.image}
+          alt={product.title}
+          className='card-image rounded'
+          loading='lazy'
+        />
+      </Link>
+      <Link to={`/product/${product._id}`}>
+        <div className='card-body'>
+          <p className='flex justify-content-between'>
+            <span>{product.title}</span>
 
-      <img
-        src={product.image}
-        alt={product.title}
-        className='card-image rounded'
-        loading='lazy'
-      />
-      <div className='card-body'>
-        <p className='flex justify-content-between'>
-          <span>{product.title}</span>
+            <span className='space-nowrap ml-3'>
+              {product.rating}
+              <i className='fa-solid fa-star ml-1 txt-warning'></i>
+            </span>
+          </p>
 
-          <span className='space-nowrap ml-3'>
-            {product.rating}
-            <i className='fa-solid fa-star ml-1 txt-warning'></i>
-          </span>
-        </p>
-
-        <p>
-          {product.discountPrice ? (
-            <>
-              <span className='txt-deleted txt-secondary mr-1'>
-                Rs {product.price}
-              </span>
-              <span className='txt-primary'>Rs {product.discountPrice}</span>
-            </>
-          ) : (
-            <span>Rs {product.price}</span>
-          )}
-        </p>
-      </div>
+          <p>
+            {product.discountPrice ? (
+              <>
+                <span className='txt-deleted txt-secondary mr-1'>
+                  Rs {product.price}
+                </span>
+                <span className='txt-primary'>Rs {product.discountPrice}</span>
+              </>
+            ) : (
+              <span>Rs {product.price}</span>
+            )}
+          </p>
+        </div>
+      </Link>
 
       {showDetails && (
         <div className='card-footer p-0'>

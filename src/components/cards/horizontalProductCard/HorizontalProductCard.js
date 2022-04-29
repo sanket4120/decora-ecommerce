@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   removeProductFromCart,
   updateCart,
@@ -23,12 +24,16 @@ const HorizontalCard = ({ product }) => {
 
   return (
     <div className='card card-horizontal col-12 relative'>
-      <div className='card-image absolute top-0 start-0 w-100 h-100'>
-        <img src={product.image} alt='alt text' className='contain' />
-      </div>
+      <Link to={`/product/${product._id}`}>
+        <div className='card-image absolute top-0 start-0 w-100 h-100'>
+          <img src={product.image} alt='alt text' className='contain' />
+        </div>
+      </Link>
       <div className='card-content'>
         <div className='card-body'>
-          <p className='mb-3'>{product.title}</p>
+          <Link to={`/product/${product._id}`}>
+            <p className='mb-3 size-5'>{product.title}</p>
+          </Link>
           <p>{product.discount && `${product.discount} % off`}</p>
           <div className='my-3'>
             <p>
