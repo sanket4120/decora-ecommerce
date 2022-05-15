@@ -4,6 +4,7 @@ import {
   featuredProductsReducer,
   topProductsReducer,
   productListReducer,
+  productDetailsReducer,
 } from '../reducers/productReducer';
 import { filterProducts } from '../utils/filter';
 
@@ -24,6 +25,11 @@ const ProductsProvider = ({ children }) => {
     initialState.productList
   );
 
+  const [productDetailsState, setProductDetails] = useReducer(
+    productDetailsReducer,
+    initialState.product
+  );
+
   const { products, filters } = productListState;
   const filteredProducts = filterProducts(products, filters);
 
@@ -34,9 +40,11 @@ const ProductsProvider = ({ children }) => {
         featuredProductsState,
         productListState,
         filteredProducts,
+        productDetailsState,
         setFeaturedProducts,
         setTopProducts,
         setProductList,
+        setProductDetails,
       }}
     >
       {children}

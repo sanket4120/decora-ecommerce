@@ -13,6 +13,8 @@ import Wishlist from './pages/wishlist/Wishlist';
 import Cart from './pages/cart/Cart';
 import AuthRequired from './components/authRequired/AuthRequired';
 import Account from './pages/account/Account';
+import Product from './pages/product/Product';
+import NotFound from './pages/notFound/NotFound';
 
 function App() {
   useAddLibrary('https://modulo.netlify.app/js/main.js');
@@ -52,6 +54,8 @@ function App() {
                 </AuthRequired>
               }
             />
+            <Route path='/product/:productId' element={<Product />} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
         </div>
         <Footer />
