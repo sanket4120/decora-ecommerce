@@ -46,7 +46,7 @@ export const validateSignup = (formData) => {
   const errors = {};
   for (const fieldName in formData.errors) {
     const error = validateSignupField(fieldName, formData[fieldName], formData);
-    if (error.length > 0) {
+    if (error?.length > 0) {
       isValid = false;
       errors[fieldName] = error;
     }
@@ -59,7 +59,82 @@ export const validateLogin = (formData) => {
   const errors = {};
   for (const fieldName in formData.errors) {
     const error = validateLoginField(fieldName, formData[fieldName], formData);
-    if (error.length > 0) {
+    if (error?.length > 0) {
+      isValid = false;
+      errors[fieldName] = error;
+    }
+  }
+  return { isValid, errors };
+};
+
+export const validateAddressField = (name, value, formData) => {
+  switch (name) {
+    case 'firstName':
+      return value.length >= 2 && /^[a-zA-Z ]*$/.test(value)
+        ? ''
+        : 'Invalid First Name';
+
+    case 'lastName':
+      return value.length >= 2 && /^[a-zA-Z ]*$/.test(value)
+        ? ''
+        : 'Invalid Last Name';
+
+    case 'phoneNumber':
+      return /^\d{10}$/.test(value) ? '' : 'Invalid phone number';
+
+    case 'state':
+      return value === '' ? 'state is required' : '';
+
+    case 'city':
+      return value === '' ? 'city is required' : '';
+
+    case 'pincode':
+      return value.length !== 6 ? 'Invalid pincode' : '';
+
+    case 'addressLine1':
+      return value === '' ? 'Address details required' : '';
+
+    default:
+      break;
+  }
+};
+
+export const validateAddress = (formData) => {
+  let isValid = true;
+  const errors = {};
+  for (const fieldName in formData.errors) {
+    const error = validateAddressField(
+      fieldName,
+      formData[fieldName],
+      formData
+    );
+    if (error?.length > 0) {
+      isValid = false;
+      errors[fieldName] = error;
+    }
+  }
+  return { isValid, errors };
+};
+
+export const validateCheckoutField = (name, value) => {
+  switch (name) {
+    case 'paymentMethod':
+      return value === '' ? 'Please select payment method' : '';
+
+    case 'deliveryDetails':
+      return value === '' ? 'Please select delivery address' : '';
+
+    default:
+      break;
+  }
+};
+
+export const validateCheckout = (formData) => {
+  let isValid = true;
+  const errors = {};
+  for (const fieldName in formData.errors) {
+    const error = validateCheckoutField(fieldName, formData[fieldName]);
+    if (error?.length > 0) {
       isValid = false;
       errors[fieldName] = error;
     }

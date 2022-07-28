@@ -54,7 +54,7 @@ const Filters = () => {
         Clear All
       </button>
 
-      <form>
+      <form id='filters'>
         <div className='mb-5'>
           <h4 className='fw-medium mb-3'>Price</h4>
           <div className='pr-3'>

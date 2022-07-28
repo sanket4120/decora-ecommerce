@@ -27,12 +27,34 @@ import {
   CART_UPDATE_PRODUCT_FAIL,
   CART_UPDATE_PRODUCT_REQUEST,
   CART_UPDATE_PRODUCT_SUCCESS,
+  GET_ADDRESS_REQUEST,
+  GET_ADDRESS_SUCCESS,
+  GET_ADDRESS_FAIL,
+  ADD_ADDRESS_REQUEST,
+  ADD_ADDRESS_SUCCESS,
+  ADD_ADDRESS_FAIL,
+  REMOVE_ADDRESS_REQUEST,
+  REMOVE_ADDRESS_SUCCESS,
+  REMOVE_ADDRESS_FAIL,
+  UPDATE_ADDRESS_REQUEST,
+  UPDATE_ADDRESS_SUCCESS,
+  UPDATE_ADDRESS_FAIL,
+  ORDERS_REQUEST,
+  ORDERS_SUCCESS,
+  ORDERS_FAIL,
+  PLACE_ORDER_REQUEST,
+  PLACE_ORDER_SUCCESS,
+  PLACE_ORDER_FAIL,
+  ORDER_DETAILS_REQUEST,
+  ORDER_DETAILS_SUCCESS,
+  ORDER_DETAILS_FAIL,
 } from '../constants/userConstants';
 
 export const initialState = {
   auth: {},
   wishlist: {},
   cart: {},
+  address: {},
 };
 
 export const authReducer = (state, action) => {
@@ -95,6 +117,61 @@ export const cartReducer = (state, action) => {
     case CART_ADD_PRODUCT_FAIL:
     case CART_FAIL:
       return { loading: false, cart: [], error: payload };
+    default:
+      return state;
+  }
+};
+
+export const addressReducer = (state, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case UPDATE_ADDRESS_REQUEST:
+    case REMOVE_ADDRESS_REQUEST:
+    case ADD_ADDRESS_REQUEST:
+    case GET_ADDRESS_REQUEST:
+      return { ...state, loading: true, error: false };
+    case UPDATE_ADDRESS_SUCCESS:
+    case REMOVE_ADDRESS_SUCCESS:
+    case ADD_ADDRESS_SUCCESS:
+    case GET_ADDRESS_SUCCESS:
+      return { loading: false, address: payload };
+    case GET_ADDRESS_FAIL:
+      return { loading: false, error: payload, address: [] };
+    case UPDATE_ADDRESS_FAIL:
+    case REMOVE_ADDRESS_FAIL:
+    case ADD_ADDRESS_FAIL:
+      return { ...state, loading: false, error: payload };
+    default:
+      return state;
+  }
+};
+
+export const orderReducer = (state, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case PLACE_ORDER_REQUEST:
+    case ORDERS_REQUEST:
+      return { ...state, loading: true, error: false };
+    case PLACE_ORDER_SUCCESS:
+    case ORDERS_SUCCESS:
+      return { ...state, loading: false, orders: payload };
+    case PLACE_ORDER_FAIL:
+    case ORDERS_FAIL:
+      return { loading: false, orders: [], error: payload };
+    default:
+      return state;
+  }
+};
+
+export const orderDetailsReducer = (state, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case ORDER_DETAILS_REQUEST:
+      return { loading: true };
+    case ORDER_DETAILS_SUCCESS:
+      return { loading: false, orderDetails: payload };
+    case ORDER_DETAILS_FAIL:
+      return { loading: false, error: payload };
     default:
       return state;
   }

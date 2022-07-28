@@ -28,6 +28,26 @@ import {
   CART_UPDATE_PRODUCT_REQUEST,
   CART_UPDATE_PRODUCT_SUCCESS,
   CART_UPDATE_PRODUCT_FAIL,
+  GET_ADDRESS_REQUEST,
+  GET_ADDRESS_SUCCESS,
+  GET_ADDRESS_FAIL,
+  ADD_ADDRESS_REQUEST,
+  ADD_ADDRESS_SUCCESS,
+  ADD_ADDRESS_FAIL,
+  REMOVE_ADDRESS_REQUEST,
+  REMOVE_ADDRESS_SUCCESS,
+  REMOVE_ADDRESS_FAIL,
+  UPDATE_ADDRESS_REQUEST,
+  UPDATE_ADDRESS_SUCCESS,
+  UPDATE_ADDRESS_FAIL,
+  ORDERS_REQUEST,
+  ORDERS_FAIL,
+  PLACE_ORDER_REQUEST,
+  PLACE_ORDER_FAIL,
+  PLACE_ORDER_SUCCESS,
+  ORDER_DETAILS_REQUEST,
+  ORDER_DETAILS_SUCCESS,
+  ORDER_DETAILS_FAIL,
 } from '../constants/userConstants';
 import { setMessage } from './messageActions';
 
@@ -208,5 +228,94 @@ export const updateCart = async (dispatch, setMessages, product) => {
       errors.map((error) => setMessage(setMessages, error, 'danger'));
     }
     dispatch({ type: CART_UPDATE_PRODUCT_FAIL, payload: errors });
+  }
+};
+
+export const getUserAddress = async (dispatch) => {
+  dispatch({ type: GET_ADDRESS_REQUEST });
+  try {
+    const res = await axios.get('/api/user/address');
+    dispatch({ type: GET_ADDRESS_SUCCESS, payload: res.data.address });
+  } catch (e) {
+    dispatch({ type: GET_ADDRESS_FAIL, payload: 'Server Error' });
+  }
+};
+
+export const addUserAddress = async (dispatch, setMessages, address) => {
+  dispatch({ type: ADD_ADDRESS_REQUEST });
+  try {
+    const res = await axios.post('/api/user/address', { address });
+    dispatch({ type: ADD_ADDRESS_SUCCESS, payload: res.data.address });
+    setMessage(setMessages, 'Address added', 'success');
+  } catch (e) {
+    setMessage(setMessages, 'Server error', 'danger');
+    dispatch({ type: ADD_ADDRESS_FAIL, payload: 'Server Error' });
+  }
+};
+
+export const deleteUserAddress = async (dispatch, setMessages, address) => {
+  dispatch({ type: REMOVE_ADDRESS_REQUEST });
+  try {
+    const res = await axios.delete(`/api/user/address/${address._id}`);
+    dispatch({ type: REMOVE_ADDRESS_SUCCESS, payload: res.data.address });
+    setMessage(setMessages, 'Address removed', 'success');
+  } catch (e) {
+    setMessage(setMessages, 'Server error', 'danger');
+    dispatch({ type: REMOVE_ADDRESS_FAIL, payload: 'Server Error' });
+  }
+};
+
+export const updateUserAddress = async (
+  dispatch,
+  setMessages,
+  addressId,
+  address
+) => {
+  dispatch({ type: UPDATE_ADDRESS_REQUEST });
+  try {
+    const res = await axios.post(`/api/user/address/${addressId}`, {
+      address,
+    });
+    dispatch({ type: UPDATE_ADDRESS_SUCCESS, payload: res.data.address });
+    setMessage(setMessages, 'Address updated', 'success');
+  } catch (e) {
+    setMessage(setMessages, 'Server error', 'danger');
+    dispatch({ type: UPDATE_ADDRESS_FAIL, payload: 'Server Error' });
+  }
+};
+
+export const getOrders = async (dispatch) => {
+  dispatch({ type: ORDERS_REQUEST });
+  try {
+    const res = await axios.get('/api/user/orders');
+    dispatch({ type: ORDERS_REQUEST, payload: res.data.orders });
+  } catch (e) {
+    dispatch({ type: ORDERS_FAIL, payload: 'Server Error' });
+  }
+};
+
+export const placeOrder = async (dispatch, setMessages, orderDetails) => {
+  dispatch({ type: PLACE_ORDER_REQUEST });
+  try {
+    const res = await axios.post('/api/user/orders', { orderDetails });
+    dispatch({ type: PLACE_ORDER_SUCCESS, payload: res.data.orders });
+    setMessage(setMessages, 'Order placed successfully', 'success');
+  } catch (e) {
+    const errors = e.response.data.errors;
+    if (errors) {
+      errors.map((error) => setMessage(setMessages, error, 'danger'));
+    }
+    dispatch({ type: PLACE_ORDER_FAIL, payload: errors });
+  }
+};
+
+export const getOrderDetails = async (dispatch, orderId) => {
+  dispatch({ type: ORDER_DETAILS_REQUEST });
+  try {
+    const res = await axios.get(`/api/user/orders/${orderId}`);
+    dispatch({ type: ORDER_DETAILS_SUCCESS, payload: res.data.order });
+  } catch (e) {
+    const errors = e.response.data.errors;
+    dispatch({ type: ORDER_DETAILS_FAIL, payload: errors });
   }
 };

@@ -101,55 +101,6 @@ export const removeItemFromCartHandler = function (schema, request) {
 /**
  * Update Cart
  * send POST Request at /api/user/cart/:productId
- * body contains {action} (whose 'type' can be increment or decrement)
- * */
-
-// export const updateCartItemHandler = function (schema, request) {
-//   const productId = request.params.productId;
-//   const userId = requiresAuth.call(this, request);
-//   try {
-//     if (!userId) {
-//       new Response(
-//         404,
-//         {},
-//         {
-//           errors: ["The email you entered is not Registered. Not Found error"],
-//         }
-//       );
-//     }
-//     const userCart = schema.users.findBy({ _id: userId }).cart;
-//     const { action } = JSON.parse(request.requestBody);
-//     if (action.type === "increment") {
-//       userCart.forEach((product) => {
-//         if (product._id === productId) {
-//           product.qty += 1;
-//           product.updatedAt = formatDate();
-//         }
-//       });
-//     } else if (action.type === "decrement") {
-//       userCart.forEach((product) => {
-//         if (product._id === productId) {
-//           product.qty -= 1;
-//           product.updatedAt = formatDate();
-//         }
-//       });
-//     }
-//     this.db.users.update({ _id: userId }, { cart: userCart });
-//     return new Response(200, {}, { cart: userCart });
-//   } catch (error) {
-//     return new Response(
-//       500,
-//       {},
-//       {
-//         error,
-//       }
-//     );
-//   }
-// };
-
-/**
- * Update Cart
- * send POST Request at /api/user/cart/:productId
  * body contains quantity to update
  * */
 
