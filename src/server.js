@@ -12,7 +12,6 @@ import {
 import {
   getOrdersHandler,
   addOrderHandler,
-  cancelOrderHandler,
   getOrderHandler,
 } from './backend/controllers/OrderController';
 import {

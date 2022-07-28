@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getOrderDetails } from '../../actions/userActions';
 import { useUser } from '../../context/userContext';
 import Loader from '../../components/loader/Loader';
-import HorizontalProductCard from '../../components/cards/horizontalProductCard/HorizontalProductCard';
-import ItemsSummary from '../../components/itemsSummary/ItemsSummary';
 
 const OrderDetails = () => {
   const {
