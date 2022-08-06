@@ -1,21 +1,12 @@
 import { Link } from 'react-router-dom';
 import HorizontalProductCard from '../../components/cards/horizontalProductCard/HorizontalProductCard';
+import ItemsSummary from '../../components/itemsSummary/ItemsSummary';
 import { useUser } from '../../context/userContext';
-import './cart.css';
 
 const Cart = () => {
   const {
     cartState: { cart },
   } = useUser();
-
-  const getCartTotal = () =>
-    cart?.reduce(
-      (acc, product) =>
-        (acc =
-          acc +
-          Number(product.qty) * Number(product.discountPrice ?? product.price)),
-      0
-    );
 
   return (
     <section className='my-6 minheight'>
@@ -33,42 +24,13 @@ const Cart = () => {
           </main>
 
           <aside className='col-12 col-md-5 col-lg-4 checkout'>
-            <div className='mb-5'>
-              <h4>Apply Coupan</h4>
-              <form className='my-3 flex align-items-center'>
-                <input
-                  type='text'
-                  className='input'
-                  placeholder='Enter your coupan code'
-                />
-                <button className='btn btn-secondary ml-1'>APPLY</button>
-              </form>
-            </div>
-
-            <ul className='list-unstyled border'>
-              {cart?.map((product) => (
-                <li
-                  className='list-item flex justify-content-between'
-                  key={product._id}
-                >
-                  <span>
-                    {product.title} &times; {product.qty}
-                  </span>
-                  <span className='ml-2'>
-                    {product.qty * (product.discountPrice ?? product.price)}
-                  </span>
-                </li>
-              ))}
-              <li className='list-item flex justify-content-between'>
-                <span className='fw-medium'>Total</span>
-                <span className='txt-primary'>{getCartTotal()}</span>
-              </li>
-              <li className='list-item'>
+            <ItemsSummary items={cart}>
+              <Link to='/checkout' className='w-100'>
                 <button className='btn btn-primary w-100'>
                   Proceed To Checkout
                 </button>
-              </li>
-            </ul>
+              </Link>
+            </ItemsSummary>
           </aside>
         </section>
       ) : (

@@ -38,7 +38,7 @@ function Navbar() {
         <ul>
           {isAuthenticated ? (
             <li className='navbar-item dropdown'>
-              <i className='fa-regular fa-user mr-2'></i>
+              <i className='fa-solid fa-user mr-2'></i>
               <span className='txt-capitalize'>Hello {userInfo.firstName}</span>
 
               <ul className='dropdown-menu'>
@@ -55,13 +55,13 @@ function Navbar() {
           ) : (
             <li className='navbar-item badge-container'>
               <NavLink to='/login'>
-                <i className='fa-regular fa-user'></i>
+                <i className='fa-solid fa-user'></i>
               </NavLink>
             </li>
           )}
           <li className='navbar-item badge-container'>
             <NavLink to='/wishlist'>
-              <i className='fa-regular fa-heart'></i>
+              <i className='fa-solid fa-heart'></i>
             </NavLink>
             <span className='badge'>{wishlist ? wishlist.length : '0'}</span>
           </li>

@@ -1,12 +1,12 @@
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useUser } from '../../context/userContext';
 
-const AuthRequired = ({ children }) => {
+const AuthRequired = () => {
   const location = useLocation();
   const { authState } = useUser();
 
   return authState.isAuthenticated ? (
-    children
+    <Outlet />
   ) : (
     <Navigate to='/login' state={{ from: location.pathname }} />
   );
