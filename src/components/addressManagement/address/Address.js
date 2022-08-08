@@ -19,7 +19,7 @@ const Address = ({ address }) => {
         )}
 
         <Link to='/account/address/new' state={{ address }} className='ml-auto'>
-          <button className='btn btn-sm border-none'>
+          <button className='btn btn-sm border-none' type='button'>
             <i className='fa-regular fa-pen-to-square'></i> Edit
           </button>
         </Link>
@@ -27,6 +27,7 @@ const Address = ({ address }) => {
         <button
           className='btn btn-sm border-none'
           onClick={() => handleDelete(address)}
+          type='button'
         >
           <i className='fa-regular fa-trash-can'></i> Remove
         </button>
